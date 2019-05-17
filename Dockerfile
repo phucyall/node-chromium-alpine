@@ -6,6 +6,7 @@ RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/reposit
 RUN echo "http://dl-2.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
 # install chromium
+RUN apk update
 RUN apk -U --no-cache \
     --allow-untrusted add \
     zlib-dev \
@@ -16,7 +17,17 @@ RUN apk -U --no-cache \
     dbus \
     ttf-freefont \
     grep \ 
-    udev
+    udev \
+    fontconfig \
+    pango-dev \
+    libxcursor \
+    libxdamage \
+    cups-libs \
+    dbus-libs \
+    libxrandr \
+    gconf-dev \
+    libxscrnsaver \
+    libc6-compat
 
 ENV CHROME_BIN=/usr/bin/chromium-browser
 ENV CHROME_PATH=/usr/lib/chromium/
